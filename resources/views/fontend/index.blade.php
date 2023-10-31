@@ -956,7 +956,7 @@
                           <!-- /.product-image -->
                           
                           <div class="product-info text-left">
-                            <h3 class="name"><a href="detail.html">@if (session()->get('language')=='hindi'){{$item->product_name_hin}}@else{{$item->product_name_en}} 
+                            <h3 class="name"><a href="{{url('product/details/'.$item->id.'/'.$item->product_slug_en)}}">@if (session()->get('language')=='hindi'){{$item->product_name_hin}}@else{{$item->product_name_en}} 
                             @endif
                           </a></h3>
                             <div class="rating rateit-small"></div>
@@ -1001,8 +1001,6 @@
               </div>
               <!-- /.tab-pane -->
               @foreach ($categories as $category)
-                  
-             
               <div class="tab-pane" id="category{{ $category->id }}">
                 <div class="product-slider">
                   <div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4">
