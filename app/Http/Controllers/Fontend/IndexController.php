@@ -7,13 +7,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Category;
+use App\Models\Slider;
+use App\Models\Product;
 use Illuminate\Support\Facades\Hash;
 
 class IndexController extends Controller
 {
     public function index()
     {
-        return view('fontend.index');
+        $slider = Slider::where('status', 1)->orderBy('id', 'DESC')->limit(3)->get();
+        $categories = Category::orderBy('category_name_en', 'ASC')->get();
+        $product = Product::where('status', 1)->orderBy('id', 'DESC')->limit(6)->get();
+        return view('fontend.index', compact('categories', 'slider', 'product'));
     }
     public function UserLogout()
     {
