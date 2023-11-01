@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\MultiImg;
 use App\Models\Slider;
 use App\Models\Product;
 use Illuminate\Support\Facades\Hash;
@@ -19,7 +20,9 @@ class IndexController extends Controller
         $slider = Slider::where('status', 1)->orderBy('id', 'DESC')->limit(3)->get();
         $categories = Category::orderBy('category_name_en', 'ASC')->get();
         $product = Product::where('status', 1)->orderBy('id', 'DESC')->limit(6)->get();
-        return view('fontend.index', compact('categories', 'slider', 'product'));
+        $featured = Product::where('featured', 1)->orderBy('id', 'DESC')->limit(6)->get();
+        $hot_deal = Product::where('hot_deals', 1)->orderBy('id', 'DESC')->limit(3)->get();
+        return view('fontend.index', compact('categories', 'slider', 'product', 'featured', 'hot_deal'));
     }
     public function UserLogout()
     {
@@ -77,9 +80,10 @@ class IndexController extends Controller
             return redirect()->back();
         }
     }
-    public function ProductDetails($id)
+    public function ProductDetails($id, $slug)
     {
-        $product = Product::findOrFail($id, $slug);
-        return view('fontend/product/product_details');
+        $multi_img = MultiImg::where('product_id', $id)->get();
+        $product = Product::findOrFail($id);
+        return view('fontend/product/product_details', compact('product', 'multi_img'));
     }
 }
