@@ -10,7 +10,7 @@
         <div class="item"> <a href="#" class="image"> <img data-echo="{{asset('fontend/assets/images/brands/brand3.png')}}" src="{{asset('fontend/assets/images/blank.gif')}}" alt=""> </a> </div>
         <!--/.item-->
         
-        <div class="item"> <a href="#" class="image"> <img data-echo="{{asset('fontend/')}}assets/images/brands/brand4.png" src="{{asset('fontend/assets/images/blank.gif')}}" alt=""> </a> </div>
+        <div class="item"> <a href="#" class="image"> <img data-echo="{{asset('fontend/assets/images/brands/brand4.png')}}" src="{{asset('fontend/assets/images/blank.gif')}}" alt=""> </a> </div>
         <!--/.item-->
         
         <div class="item"> <a href="#" class="image"> <img data-echo="{{asset('fontend/assets/images/brands/brand5.png')}}" src="{{asset('fontend/assets/images/blank.gif')}}" alt=""> </a> </div>
