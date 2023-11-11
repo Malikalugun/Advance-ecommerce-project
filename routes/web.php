@@ -117,3 +117,7 @@ Route::get('/hindi/language,', [LanguageController::class, 'Hindi'])->name('hind
 Route::get('/english/language,', [LanguageController::class, 'English'])->name('english.language');
 // fontend product details
 Route::get('product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
+// fontend products
+Route::get('product/tag/{tag}', [IndexController::class, 'TagWishProduct']);
+// fontend subcategory wise data
+Route::get('/subcategory/product/{subcat_id}/{slug}', [IndexController::class, 'SubCatWiseProduct']);

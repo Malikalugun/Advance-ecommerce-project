@@ -97,4 +97,23 @@ class IndexController extends Controller
         $product = Product::findOrFail($id);
         return view('fontend/product/product_details', compact('product', 'multi_img'));
     }
+    public function TagWishProduct($tag)
+    {
+        $product = Product::where('status', 1)->where('product_tags_en', $tag)->where('product_tags_hin', $tag)->orderBy('id', 'DESC')->paginate(3);
+        $categories = Category::orderBy('category_name_en', 'ASC')->get();
+        return view('fontend.tags.tags_view', compact('product', 'categories'));
+    }
+    // sub category wise data
+    // public function SubCatWiseProducts($subcat_id, $slug)
+    // {
+    //     $product = Product::where('status', 1)->where('subcategory_id', $subcat_id)->orderBy('id', 'DESC')->paginate(3);
+    //     $categories = Category::orderBy('category_name_en', 'ASC')->get();
+    //     return view('fontend.product.subcategory_view', compact('product', 'categories'));
+    // }
+    public function SubCatWiseProduct($subcat_id, $slug)
+    {
+        $product = Product::where('status', 1)->where('subcategory_id', $subcat_id)->orderBy('id', 'DESC')->paginate(3);
+        $categories = Category::orderBy('category_name_en', 'ASC')->get();
+        return view('fontend.product.subcategory_view', compact('product', 'categories'));
+    }
 }
