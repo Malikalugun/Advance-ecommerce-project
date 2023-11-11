@@ -95,7 +95,19 @@ class IndexController extends Controller
     {
         $multi_img = MultiImg::where('product_id', $id)->get();
         $product = Product::findOrFail($id);
-        return view('fontend/product/product_details', compact('product', 'multi_img'));
+        $color_en = $product->product_color_en;
+        $product_color_en = explode(',', $color_en);
+        $color_hin = $product->product_color_hin;
+        $product_color_hin = explode(',', $color_hin);
+        $size_en = $product->product_size_en;
+        $product_size_en = explode(',', $size_en);
+        $size_hin = $product->product_size_hin;
+        $product_size_hin = explode(',', $size_hin);
+        $hot_deal = Product::where('hot_deals', 1)->where('discount_price', '!=', NULL)->orderBy('id', 'DESC')->limit(3)->get();
+        // remove explode
+        $cat_id = $product->category_id;
+        $related_product = Product::where('category_id', $cat_id)->where('id', '!=', $id)->orderBy('id', 'DESC')->get();
+        return view('fontend/product/product_details', compact('product', 'multi_img', 'color_en', 'color_hin', 'product_color_en', 'product_color_hin', 'size_en', 'size_hin', 'product_size_en', 'product_size_hin', 'related_product', 'hot_deal'));
     }
     public function TagWishProduct($tag)
     {
@@ -104,12 +116,6 @@ class IndexController extends Controller
         return view('fontend.tags.tags_view', compact('product', 'categories'));
     }
     // sub category wise data
-    // public function SubCatWiseProducts($subcat_id, $slug)
-    // {
-    //     $product = Product::where('status', 1)->where('subcategory_id', $subcat_id)->orderBy('id', 'DESC')->paginate(3);
-    //     $categories = Category::orderBy('category_name_en', 'ASC')->get();
-    //     return view('fontend.product.subcategory_view', compact('product', 'categories'));
-    // }
     public function SubCatWiseProduct($subcat_id, $slug)
     {
         $product = Product::where('status', 1)->where('subcategory_id', $subcat_id)->orderBy('id', 'DESC')->paginate(3);
