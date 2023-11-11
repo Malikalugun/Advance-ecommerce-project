@@ -116,4 +116,10 @@ class IndexController extends Controller
         $categories = Category::orderBy('category_name_en', 'ASC')->get();
         return view('fontend.product.subcategory_view', compact('product', 'categories'));
     }
+    public function SubSubCatWiseProduct($subsubcat_id, $slug)
+    {
+        $product = Product::where('status', 1)->where('subsubcategory_id', $subsubcat_id)->orderBy('id', 'DESC')->paginate(6);
+        $categories = Category::orderBy('category_name_en', 'ASC')->get();
+        return view('fontend.product.sub_subcategory_view', compact('product', 'categories'));
+    }
 }

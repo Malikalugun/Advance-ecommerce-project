@@ -32,7 +32,7 @@
                    @foreach ($subsubcategories as $item)
                   <ul class="links list-unstyled">
 
-                    <li><a href="#">  @if (session()->get('language')=='hindi'){{$item->subsubcategory_name_hin}}@else  {{$item->subsubcategory_name_en}} @endif</a></li>
+                    <li><a href="{{url('subsubcategory/product/'.$item->id.'/'.$item->subsubcategory_slug_en)}}">  @if (session()->get('language')=='hindi'){{$item->subsubcategory_name_hin}}@else  {{$item->subsubcategory_name_en}} @endif</a></li>
 
                   </ul>
                   @endforeach

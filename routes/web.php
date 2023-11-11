@@ -121,3 +121,4 @@ Route::get('product/details/{id}/{slug}', [IndexController::class, 'ProductDetai
 Route::get('product/tag/{tag}', [IndexController::class, 'TagWishProduct']);
 // fontend subcategory wise data
 Route::get('/subcategory/product/{subcat_id}/{slug}', [IndexController::class, 'SubCatWiseProduct']);
+Route::get('/subsubcategory/product/{subsubcat_id}/{slug}', [IndexController::class, 'SubSubCatWiseProduct']);
