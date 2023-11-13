@@ -29,7 +29,7 @@
                            @foreach ($products as $item)
                            <tr>
                             <td><img src="{{asset($item->product_thumbnail)}}" alt="" style="width: 60px;height:60px"></td>
-                              <td>{{$item->product_name_en}}></td>
+                              <td>{{$item->product_name_en}}</td>
                               <td>{{$item->selling_price}} $</td>                             
                               <td>{{$item->product_qty}}</td>
                               <td>

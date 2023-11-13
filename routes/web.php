@@ -122,3 +122,5 @@ Route::get('product/tag/{tag}', [IndexController::class, 'TagWishProduct']);
 // fontend subcategory wise data
 Route::get('/subcategory/product/{subcat_id}/{slug}', [IndexController::class, 'SubCatWiseProduct']);
 Route::get('/subsubcategory/product/{subsubcat_id}/{slug}', [IndexController::class, 'SubSubCatWiseProduct']);
+// product view model with ajax
+Route::get('/product/view/model/{id}', [IndexController::class, 'ProductViewAjax']);
